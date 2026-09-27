@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <Platforms>x64</Platforms>
+    <Version>0.1.0</Version>
+    <AssemblyName>PromptRun</AssemblyName>
+    <RootNamespace>PromptRun</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Community.PowerToys.Run.Plugin.Dependencies" Version="0.97.0" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="PromptRun.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="plugin.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Images\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <!-- Design D1: the dependencies package force-copies host-provided Wox/PowerToys
+       DLLs into the output; our zip must NOT carry them (runtime resolves the host's). -->
+  <Target Name="RemoveHostProvidedDlls" AfterTargets="Build">
+    <ItemGroup>
+      <HostProvidedDlls Include="$(OutputPath)Wox.Plugin.*;$(OutputPath)Wox.Infrastructure.*;$(OutputPath)PowerToys.Common.UI.*;$(OutputPath)PowerToys.ManagedCommon.*;$(OutputPath)PowerToys.Settings.UI.Lib.*" />
+    </ItemGroup>
+    <Delete Files="@(HostProvidedDlls)" />
+  </Target>
+
+</Project>

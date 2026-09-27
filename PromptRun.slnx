@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PromptRun/PromptRun.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PromptRun.Tests/PromptRun.Tests.csproj" />
+  </Folder>
+</Solution>

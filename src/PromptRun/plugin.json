@@ -1,0 +1,13 @@
+{
+  "ID": "41cb6646-ea9f-44b3-bb4b-509555f24f44",
+  "ActionKeyword": "pp",
+  "Name": "PromptRUN",
+  "Description": "Search and copy your hand-maintained prompt snippets. Push/pull the library to a private GitHub repo.",
+  "Author": "Tai-Yng",
+  "Version": "0.1.0",
+  "Language": "csharp",
+  "Website": "https://github.com/Tai-Yng/PromptRun",
+  "ExecuteFileName": "PromptRun.dll",
+  "IcoPathDark": "Images/icon.png",
+  "IcoPathLight": "Images/icon.png"
+}
